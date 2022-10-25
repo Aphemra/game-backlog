@@ -1,5 +1,11 @@
+import TestAPI from "./components/TestAPI";
+
 function App() {
-	return <div className="App">Empty React Project</div>;
+	return (
+		<div className="App">
+			<TestAPI />
+		</div>
+	);
 }
 
 export default App;
