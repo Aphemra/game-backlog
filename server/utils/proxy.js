@@ -7,9 +7,8 @@ const proxy = axios.create({
 	params: { key: process.env.RAWG_API_KEY },
 });
 
-// TEST PROXY, CHANGE LATER
-module.exports = async (params) => {
-	return proxy("/games", {
+module.exports = async (url, params) => {
+	return proxy(url, {
 		params: params,
 	})
 		.then((response) => response.data)

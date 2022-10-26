@@ -9,8 +9,10 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Future Routes Here
-app.post("/games", require("./routes/TestProxy"));
+// Proxy API Routes
+app.post("/games", require("./routes/proxies/GetGames"));
+
+// Internal Database Routes
 
 app.use(require("./middleware/CatchValidationErrors"));
 

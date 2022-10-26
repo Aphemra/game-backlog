@@ -5,6 +5,7 @@ const api = axios.create({
 	headers: { "Content-Type": "application/json" },
 });
 
+// This needs to simplified so the searchQuery is not so specific and it instead can handle multiple param values
 export async function getGames(searchQuery) {
 	return await api
 		.post("/games", { search: searchQuery })
