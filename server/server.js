@@ -1,5 +1,5 @@
 require("dotenv").config();
-const app = require("express");
+const app = require("express")();
 
 const { prisma } = require("@prisma/client");
 const cors = require("cors");
@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Future Routes Here
+app.get("/games", require("./routes/TestProxy"));
 
 app.use(require("./middleware/CatchValidationErrors"));
 
