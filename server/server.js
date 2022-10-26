@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Future Routes Here
-app.get("/games", require("./routes/TestProxy"));
+app.post("/games", require("./routes/TestProxy"));
 
 app.use(require("./middleware/CatchValidationErrors"));
 
