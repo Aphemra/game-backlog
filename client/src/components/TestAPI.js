@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { getGames } from "../services/api";
+import GameSearchEntry from "./GameSearchEntry";
 
 export default function TestAPI() {
 	const [results, setResults] = useState([]);
@@ -9,7 +10,19 @@ export default function TestAPI() {
 
 	useEffect(() => {
 		getGames()
-			.then((data) => data.results.map((game) => game.name))
+			.then((data) =>
+				data.results.map((game) => {
+					return {
+						name: game.name,
+						platforms: game.platforms,
+						released: game.released,
+						image: game.background_image,
+						metacritic: game.metacritic,
+						esrb: game.esrb_rating.name,
+						genres: game.genres,
+					};
+				})
+			)
 			.then((games) => setResults(games));
 	}, []);
 
@@ -17,7 +30,19 @@ export default function TestAPI() {
 		event.preventDefault();
 		setIsLoading(true);
 		getGames(searchInput.current.value)
-			.then((data) => data.results.map((game) => game.name))
+			.then((data) =>
+				data.results.map((game) => {
+					return {
+						name: game.name,
+						platforms: game.platforms,
+						released: game.released,
+						image: game.background_image,
+						metacritic: game.metacritic,
+						esrb: game.esrb_rating?.name,
+						genres: game.genres,
+					};
+				})
+			)
 			.then((games) => setResults(games))
 			.finally(() => {
 				setIsLoading(false);
@@ -26,17 +51,18 @@ export default function TestAPI() {
 	}
 
 	return (
-		<div>
-			<form onSubmit={handleSearch}>
-				<label>Search Games: </label>
-				<input ref={searchInput} type="text"></input>
+		<div className="search">
+			<form className="search-form" onSubmit={handleSearch}>
+				<input ref={searchInput} type="text" placeholder="Search Games..."></input>
 				<input type="submit" value="Search"></input>
 			</form>
-			<ul>
-				{!isLoading && results.length > 0
-					? results.map((game, index) => <li key={index}>{game}</li>)
-					: "Loading Games..."}
-			</ul>
+			<div className="search-results">
+				{!isLoading && results.length > 0 ? (
+					results.map((game, index) => <GameSearchEntry key={index} game={game} />)
+				) : (
+					<div className="loading">Loading Games...</div>
+				)}
+			</div>
 		</div>
 	);
 }

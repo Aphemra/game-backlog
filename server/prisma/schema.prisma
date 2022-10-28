@@ -2,35 +2,36 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
 }
 
 model Account {
-    id          Int     @id @default(autoincrement())
-    username    String  @unique
-    password    String
-
-    backlog     Backlog[]
+    id       Int       @id @default(autoincrement())
+    username String    @unique
+    password String
+    backlog  Backlog[]
 }
 
 model Backlog {
-    id          Int     @id @default(autoincrement())
-    games       Game[]
-
-    owner       Account @relation(fields: [accountID], references: [id])
-    accountID   Int
+    id        String  @id @default(cuid())
+    games     Game[]
+    owner     Account @relation(fields: [accountID], references: [id])
+    accountID Int
 }
 
 model Game {
-    id          Int  @id @default(autoincrement())
+    id          String  @id @default(cuid())
     name        String
+    description String
+    platform    String
+    image       String
+    playtime    Float
     priority    Float
-
     backlog     Backlog @relation(fields: [backlogID], references: [id])
-    backlogID   Int
+    backlogID   String
 }

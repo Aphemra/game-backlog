@@ -2,7 +2,7 @@ import TestAPI from "./components/TestAPI";
 
 function App() {
 	return (
-		<div className="App">
+		<div className="app">
 			<TestAPI />
 		</div>
 	);

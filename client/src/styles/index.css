@@ -2,5 +2,176 @@
 *::before,
 * {
 	box-sizing: border-box;
+	margin: 0;
 	font-size: 20px;
+	font-family: Roboto;
+}
+
+:root {
+	--background: rgb(11, 22, 34);
+	--foreground: rgb(21, 31, 46);
+	--text-color: rgb(159, 173, 189);
+	--highlight: rgb(61, 180, 242);
+}
+
+.app {
+	min-height: 100vh;
+	background-color: var(--background);
+	color: var(--text-color);
+}
+
+.search {
+	padding-bottom: 0.5rem;
+}
+
+.search-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 0;
+	margin-bottom: 0.75rem;
+	background-color: var(--foreground);
+}
+
+.search-form input[type="text"] {
+	background-color: var(--background);
+	color: var(--text-color);
+	border: none;
+	outline: none;
+	width: 20rem;
+	padding: 0.25rem 0.5rem;
+	font-size: 0.75rem;
+}
+
+.search-form input[type="text"]:focus {
+	color: white;
+	outline: 2px solid var(--highlight);
+}
+
+.search-form input[type="submit"] {
+	background-color: var(--highlight);
+	color: white;
+	border-radius: 0.25rem;
+	padding: 0.25rem 0.5rem;
+	font-size: 0.75rem;
+	outline: none;
+	border: none;
+}
+
+.search-results {
+	margin: 0 auto;
+	width: 40rem;
+}
+
+.search-results .loading {
+	display: flex;
+	justify-content: center;
+}
+
+.search-results .entry {
+	display: flex;
+	position: relative;
+	gap: 0.5rem;
+	border-radius: 5rem 0.5rem 5rem 0.5rem;
+	background-color: var(--foreground);
+}
+
+.search-results .entry:not(:last-child) {
+	margin-bottom: 0.5rem;
+}
+
+.search-results .image {
+	width: 6rem;
+	object-fit: cover;
+	object-position: top;
+	aspect-ratio: 16 / 9;
+	border-radius: 5rem 0 0 0.5rem;
+}
+
+.search-results .content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 0.25rem 0;
+}
+
+.search-results .top {
+}
+
+.search-results .bottom {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.metacritic {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	min-width: 2rem;
+}
+
+.rating {
+	min-width: 6.75rem;
+}
+
+.metacritic,
+.released,
+.rating,
+.genres,
+.platforms {
+	display: flex;
+	font-size: 0.75rem;
+}
+
+.platforms {
+	background-color: var(--background);
+	color: var(--text-color);
+	border: none;
+	outline: none;
+	min-width: 8.75rem;
+	padding: 0.25rem 0.5rem;
+}
+
+.platforms > option {
+	font-size: 0.75rem;
+	background: var(--background);
+	color: var(--text-color);
+	padding: 0.25rem 0.5rem;
+}
+
+.metacritic > img {
+	object-fit: cover;
+	height: 0.75rem;
+	width: 0.75rem;
+}
+
+.search-results .buttons {
+	display: flex;
+	align-items: center;
+}
+
+.add-game {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	border: 2px solid var(--text-color);
+	background: var(--foreground);
+	border-radius: 100%;
+	font-size: 1.45rem;
+	width: 2rem;
+	height: 2rem;
+	right: 2.5rem;
+	cursor: pointer;
+}
+
+.add-game.disabled {
+	border-color: var(--background);
+	color: var(--background);
+}
+
+.add-game:not(.disabled):hover {
+	background-color: var(--highlight);
+	color: white;
 }
