@@ -20,8 +20,13 @@
 	color: var(--text-color);
 }
 
+.hide {
+	display: none;
+}
+
 .search {
 	padding-bottom: 0.5rem;
+	padding-left: calc(100vw - 100%);
 }
 
 .search-form {
@@ -164,6 +169,8 @@
 	height: 2rem;
 	right: 2.5rem;
 	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 .add-game.disabled {
@@ -174,4 +181,54 @@
 .add-game:not(.disabled):hover {
 	background-color: var(--highlight);
 	color: white;
+}
+
+.gray-out {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	top: 0;
+	width: 100vw;
+	height: 100%;
+	z-index: 5;
+}
+
+.modal {
+	display: flex;
+	justify-content: center;
+}
+
+.add-game-modal {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	top: 30%;
+	padding: 1.5rem;
+	min-width: 25rem;
+	background-color: var(--foreground);
+	border-radius: 0.25rem;
+	z-index: 10;
+}
+
+.modal-exit {
+	position: absolute;
+	font-size: 1.5rem;
+	top: 0.25rem;
+	right: 0.75rem;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.modal-exit:hover {
+	color: var(--highlight);
+}
+
+.modal-exit:active {
+	color: white;
+}
+
+.modal-title {
+	margin-bottom: 1rem;
 }
