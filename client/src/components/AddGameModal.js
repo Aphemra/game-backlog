@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 
 export default function AddGameModal({ game, toggleAddGameModal }) {
 	const platforms = game.platforms.map((platform) => platform.platform.name);
+	// const genres = game.genres.map((genre) => genre.name).join(", ");
 
 	const [platform, setPlatform] = useState("NA");
 
@@ -9,6 +10,12 @@ export default function AddGameModal({ game, toggleAddGameModal }) {
 
 	function handlePlatformChange(event) {
 		setPlatform(event.target.value);
+	}
+
+	function handleAddGame() {
+		toggleAddGameModal();
+		setPlatform("NA");
+		platformInput.current.value = "NA";
 	}
 
 	return (
@@ -29,6 +36,12 @@ export default function AddGameModal({ game, toggleAddGameModal }) {
 					);
 				})}
 			</select>
+			<div className="modal-buttons">
+				<div className={platform === "NA" ? "warning" : "hide"}>Choose a Platform!</div>
+				<button disabled={platform === "NA" ? true : false} onClick={handleAddGame} type="button">
+					Add Game
+				</button>
+			</div>
 		</div>
 	);
 }

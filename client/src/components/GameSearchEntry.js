@@ -1,6 +1,9 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
+import ESRB from "../utils/images";
 import metacriticLogo from "../images/metacritic.svg";
+import calendarIcon from "../images/calendar.png";
 import AddGameModal from "./AddGameModal";
+import formatDate from "../utils/formatDate";
 
 // name: game.name,
 // platforms: game.platforms,
@@ -11,7 +14,7 @@ import AddGameModal from "./AddGameModal";
 // genres: game.genres,
 
 export default function GameSearchEntry({ game }) {
-	const genres = game.genres.map((genre) => genre.name).join(", ");
+	const rating = getRating(game.esrb || "Not Rated");
 
 	const [hideModal, setHideModal] = useState(true);
 
@@ -19,6 +22,27 @@ export default function GameSearchEntry({ game }) {
 		setHideModal(!hideModal);
 		if (hideModal) document.body.style.overflowY = "hidden";
 		if (!hideModal) document.body.style.overflowY = "";
+	}
+
+	function getRating(esrb) {
+		switch (esrb) {
+			case "Everyone":
+				return ESRB.E;
+			case "Everyone 10+":
+				return ESRB.E10;
+			case "Teen":
+				return ESRB.T;
+			case "Mature":
+				return ESRB.M;
+			case "Adults Only":
+				return ESRB.AO;
+			case "Rating Pending":
+				return ESRB.RP;
+			case "Not Rated":
+				return ESRB.NR;
+			default:
+				return ESRB.NR;
+		}
 	}
 
 	return (
@@ -31,12 +55,17 @@ export default function GameSearchEntry({ game }) {
 					</div>
 					<div className="bottom">
 						<div className="metacritic">
-							<img src={metacriticLogo} alt="metacritic logo" />
+							<img src={metacriticLogo} alt="metacritic" />
 							{game.metacritic || "NA"}
 						</div>
-						<div className="released">Released {game.released}</div>
-						<div className="rating">ESRB: {game.esrb || "Unrated"}</div>
-						<div className="genres">{genres}</div>
+						<div className="released">
+							<img src={calendarIcon} alt="release date" />
+							{formatDate(game.released)}
+						</div>
+						<div className="rating">
+							<img src={rating} alt={game.esrb} title={game.esrb} />
+							{game.esrb || "Not Rated"}
+						</div>
 					</div>
 				</div>
 				<div className="buttons">

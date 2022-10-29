@@ -24,6 +24,11 @@
 	display: none;
 }
 
+.warning {
+	font-size: 0.75rem;
+	color: var(--highlight);
+}
+
 .search {
 	padding-bottom: 0.5rem;
 	padding-left: calc(100vw - 100%);
@@ -60,8 +65,15 @@
 	border-radius: 0.25rem;
 	padding: 0.25rem 0.5rem;
 	font-size: 0.75rem;
-	outline: none;
 	border: none;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.search-form input[type="submit"]:active {
+	background-color: white;
+	color: var(--highlight);
 }
 
 .search-results {
@@ -87,7 +99,7 @@
 }
 
 .search-results .image {
-	width: 6rem;
+	width: 8rem;
 	object-fit: cover;
 	object-position: top;
 	aspect-ratio: 16 / 9;
@@ -98,36 +110,43 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 0.25rem 0;
+	padding: 0.5rem 0;
+	gap: 0.5rem;
 }
 
-.search-results .top {
+.search-results .top .name {
+	font-size: 1.25rem;
+	font-weight: 500;
 }
 
 .search-results .bottom {
 	display: flex;
 	align-items: center;
-	gap: 1rem;
+	gap: 1.5rem;
+}
+
+.rating,
+.metacritic,
+.released {
+	display: flex;
+	align-items: center;
 }
 
 .metacritic {
-	display: flex;
-	align-items: center;
-	gap: 0.25rem;
 	min-width: 2rem;
 }
 
-.rating {
-	min-width: 6.75rem;
+.released {
+	min-width: 6.5rem;
 }
 
 .metacritic,
 .released,
 .rating,
-.genres,
 .platforms {
 	display: flex;
-	font-size: 0.75rem;
+	font-size: 0.8rem;
+	gap: 0.5rem;
 }
 
 .platforms {
@@ -146,10 +165,25 @@
 	padding: 0.25rem 0.5rem;
 }
 
-.metacritic > img {
+.metacritic > img,
+.rating > img,
+.released > img {
 	object-fit: cover;
-	height: 0.75rem;
-	width: 0.75rem;
+}
+
+.metacritic > img {
+	height: 1rem;
+	width: 1rem;
+}
+
+.rating > img {
+	height: 1.5rem;
+	width: 1.5rem;
+}
+
+.released > img {
+	height: 1rem;
+	width: 1rem;
 }
 
 .search-results .buttons {
@@ -173,14 +207,14 @@
 	user-select: none;
 }
 
-.add-game.disabled {
-	border-color: var(--background);
-	color: var(--background);
-}
-
-.add-game:not(.disabled):hover {
+.add-game:hover {
 	background-color: var(--highlight);
 	color: white;
+}
+
+.add-game:active {
+	background-color: white;
+	color: var(--highlight);
 }
 
 .gray-out {
@@ -203,12 +237,43 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 1rem;
 	top: 30%;
 	padding: 1.5rem;
 	min-width: 25rem;
 	background-color: var(--foreground);
 	border-radius: 0.25rem;
 	z-index: 10;
+}
+
+.add-game-modal button {
+	background-color: var(--highlight);
+	color: white;
+	border-radius: 0.25rem;
+	padding: 0.25rem 0.5rem;
+	font-size: 0.75rem;
+	border: none;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.add-game-modal button:active {
+	background-color: white;
+	color: var(--highlight);
+}
+
+.add-game-modal button:disabled {
+	background-color: grey;
+	color: lightgray;
+	cursor: unset;
+}
+
+.modal-buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
 }
 
 .modal-exit {
