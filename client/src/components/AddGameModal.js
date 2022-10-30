@@ -36,6 +36,11 @@ export default function AddGameModal({ game, toggleAddGameModal }) {
 					);
 				})}
 			</select>
+			<select>
+				<option disabled value="NA">
+					Backlogs
+				</option>
+			</select>
 			<div className="modal-buttons">
 				<div className={platform === "NA" ? "warning" : "hide"}>Choose a Platform!</div>
 				<button disabled={platform === "NA" ? true : false} onClick={handleAddGame} type="button">
