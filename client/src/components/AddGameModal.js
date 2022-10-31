@@ -36,7 +36,7 @@ export default function AddGameModal({ game, toggleAddGameModal }) {
 					);
 				})}
 			</select>
-			<select>
+			<select className="backlogs-list" defaultValue="NA">
 				<option disabled value="NA">
 					Backlogs
 				</option>

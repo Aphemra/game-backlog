@@ -143,13 +143,15 @@
 .metacritic,
 .released,
 .rating,
-.platforms {
+.platforms,
+.backlogs-list {
 	display: flex;
 	font-size: 0.8rem;
 	gap: 0.5rem;
 }
 
-.platforms {
+.platforms,
+.backlogs-list {
 	background-color: var(--background);
 	color: var(--text-color);
 	border: none;
@@ -158,7 +160,8 @@
 	padding: 0.25rem 0.5rem;
 }
 
-.platforms > option {
+.platforms > option,
+.backlogs-list > option {
 	font-size: 0.75rem;
 	background: var(--background);
 	color: var(--text-color);
