@@ -1,9 +1,9 @@
-import TestAPI from "./components/TestAPI";
+import Search from "./components/Search";
 
 function App() {
 	return (
 		<div className="app">
-			<TestAPI />
+			<Search />
 		</div>
 	);
 }

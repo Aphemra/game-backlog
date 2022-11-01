@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { getGames } from "../services/api";
 import GameSearchEntry from "./GameSearchEntry";
 
-export default function TestAPI() {
+export default function Search() {
 	const [results, setResults] = useState([]);
 
 	const [isLoading, setIsLoading] = useState(false);
