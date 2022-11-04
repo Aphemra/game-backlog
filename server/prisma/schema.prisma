@@ -20,7 +20,7 @@ model Account {
 model Backlog {
     id        String  @id @default(cuid())
     games     Game[]
-    owner     Account @relation(fields: [accountID], references: [id])
+    owner     Account @relation(fields: [accountID], references: [id], onDelete: Cascade)
     accountID Int
 }
 
@@ -30,8 +30,9 @@ model Game {
     description String
     platform    String
     image       String
+    status      String
     playtime    Float
     priority    Float
-    backlog     Backlog @relation(fields: [backlogID], references: [id])
+    backlog     Backlog @relation(fields: [backlogID], references: [id], onDelete: Cascade)
     backlogID   String
 }
