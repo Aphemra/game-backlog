@@ -4,6 +4,7 @@ import metacriticLogo from "../images/metacritic.svg";
 import calendarIcon from "../images/calendar.png";
 import AddGameModal from "./AddGameModal";
 import formatDate from "../utils/formatDate";
+import Tooltip from "./Tooltip";
 
 // name: game.name,
 // platforms: game.platforms,
@@ -15,6 +16,7 @@ import formatDate from "../utils/formatDate";
 
 export default function GameSearchEntry({ game }) {
 	const rating = getRating(game.esrb || "Not Rated");
+	const date = formatDate(game.released);
 
 	const [hideModal, setHideModal] = useState(true);
 
@@ -54,17 +56,17 @@ export default function GameSearchEntry({ game }) {
 						<div className="name">{game.name}</div>
 					</div>
 					<div className="bottom">
+						<div className="rating tooltip-parent">
+							<img src={rating} alt={game.esrb} />
+							<Tooltip text={game.esrb || "Not Rated"} width="4.5rem" offset="-100%" />
+						</div>
 						<div className="metacritic">
 							<img src={metacriticLogo} alt="metacritic" />
 							{game.metacritic || "NA"}
 						</div>
 						<div className="released">
 							<img src={calendarIcon} alt="release date" />
-							{formatDate(game.released)}
-						</div>
-						<div className="rating">
-							<img src={rating} alt={game.esrb} title={game.esrb} />
-							{game.esrb || "Not Rated"}
+							{date}
 						</div>
 					</div>
 				</div>

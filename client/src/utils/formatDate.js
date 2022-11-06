@@ -3,21 +3,22 @@ export default function formatDate(dateString) {
 
 	const year = dateArray[0];
 	const month = dateArray[1];
+	const day = dateArray[2];
 
 	let namedMonth;
 
 	switch (month) {
 		case "01":
-			namedMonth = "Jan.";
+			namedMonth = "January";
 			break;
 		case "02":
-			namedMonth = "Feb.";
+			namedMonth = "February";
 			break;
 		case "03":
-			namedMonth = "Mar.";
+			namedMonth = "March";
 			break;
 		case "04":
-			namedMonth = "Apr.";
+			namedMonth = "April";
 			break;
 		case "05":
 			namedMonth = "May";
@@ -29,24 +30,24 @@ export default function formatDate(dateString) {
 			namedMonth = "July";
 			break;
 		case "08":
-			namedMonth = "Aug.";
+			namedMonth = "August";
 			break;
 		case "09":
-			namedMonth = "Sept.";
+			namedMonth = "September";
 			break;
 		case "10":
-			namedMonth = "Oct.";
+			namedMonth = "October";
 			break;
 		case "11":
-			namedMonth = "Nov.";
+			namedMonth = "November";
 			break;
 		case "12":
-			namedMonth = "Dec.";
+			namedMonth = "December";
 			break;
 		default:
-			namedMonth = "Jan.";
+			namedMonth = "January";
 			break;
 	}
 
-	return `${namedMonth} ${year}`;
+	return `${namedMonth} ${day}, ${year}`;
 }
