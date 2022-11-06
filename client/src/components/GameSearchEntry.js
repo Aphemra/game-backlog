@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ESRB from "../utils/images";
+import { esrb as ESRB } from "../utils/images";
 import metacriticLogo from "../images/metacritic.svg";
 import calendarIcon from "../images/calendar.png";
 import AddGameModal from "./AddGameModal";

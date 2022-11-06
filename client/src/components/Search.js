@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { getGames } from "../services/api";
 import GameSearchEntry from "./GameSearchEntry";
 
+// Filter out games from old and un-wanted platforms.
+
 export default function Search() {
 	const [results, setResults] = useState([]);
 
