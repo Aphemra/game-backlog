@@ -355,3 +355,23 @@
 	border-style: solid;
 	border-color: transparent transparent var(--highlight) transparent;
 }
+
+.platform-icon {
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+}
+
+.platform-icon:hover,
+.platform-icon.selected:hover {
+	filter: brightness(75%) sepia(100) saturate(25) hue-rotate(166deg);
+}
+
+.platform-icon:active,
+.platform-icon.selected:active {
+	filter: brightness(75%);
+}
+
+.platform-icon.selected {
+	filter: brightness(75%) sepia(100) saturate(75) hue-rotate(166deg);
+}
