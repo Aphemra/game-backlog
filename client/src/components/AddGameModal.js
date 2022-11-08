@@ -4,7 +4,6 @@ import Multiselector from "./Multiselector";
 
 export default function AddGameModal({ game, toggleAddGameModal }) {
 	const platforms = game.platforms.map((platform) => platform.platform.name);
-	// const genres = game.genres.map((genre) => genre.name).join(", ");
 
 	const icons = getPlatformIcons(platforms);
 	icons.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
